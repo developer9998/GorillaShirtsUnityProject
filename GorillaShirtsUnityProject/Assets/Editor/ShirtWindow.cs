@@ -44,17 +44,42 @@ public class ShirtWindow : EditorWindow
         if (window.position.size.y >= ScrollSpace) windowWidthIncludingScrollbar += 30;
         scrollPosition = GUI.BeginScrollView(new Rect(0, 0, EditorGUIUtility.currentViewWidth, window.position.size.y), scrollPosition, new Rect(0, 0, EditorGUIUtility.currentViewWidth - 20, ScrollSpace), false, false);
 
-        GUILayout.Label("Shirts", EditorStyles.boldLabel, GUILayout.Height(16));
-        GUILayout.Space(5);
+        Font utopium = Resources.Load("Utopium-Regular") as Font;
 
-        if (notes.Length <= 0) GUILayout.Label("No shirts found!", GUILayout.Height(16));
-        else GUILayout.Space(10);
+        // GUIStyles
+        GUIStyle titleLabel = new GUIStyle();
+        titleLabel.fontStyle = FontStyle.Normal;
+        titleLabel.alignment = TextAnchor.MiddleCenter;
+        titleLabel.font = utopium;
+        titleLabel.fontSize = 20;
+
+        GUIStyle creditLabel = new GUIStyle();
+        creditLabel.alignment = TextAnchor.MiddleCenter;
+        creditLabel.font = utopium;
+        creditLabel.fontSize = 14;
+
+        GUIStyle boldLabel = new GUIStyle();
+        boldLabel.alignment = TextAnchor.MiddleCenter;
+        boldLabel.font = utopium;
+        boldLabel.fontSize = 16;
+
+        GUIStyle middleCenter = new GUIStyle();
+        middleCenter.alignment = TextAnchor.MiddleCenter;
+
+        // Intro
+        GUILayout.Space(14);
+        GUILayout.Label("GorillaShirts Exporter".ToUpper(), titleLabel);
+        GUILayout.Space(3);
+        GUILayout.Label("A mod by dev9998".ToUpper(), creditLabel);
+        GUILayout.Space(12);
+
+        if (notes.Length == 0) GUILayout.Label("No shirt descriptors found!\nIf you're not already, go to Scenes > SampleScene and open it where there should be a descriptor.", middleCenter);
 
         foreach (var note in notes)
         {
             if (note != null)
             {
-                GUILayout.Label("GameObject : " + note.gameObject.name, EditorStyles.boldLabel, GUILayout.Height(16));
+                GUILayout.Label(string.Join(": ", "GameObject", note.gameObject.name).ToUpper(), boldLabel);
                 note.Name = EditorGUILayout.TextField("Name", note.Name, GUILayout.Width(windowWidthIncludingScrollbar - 40), GUILayout.Height(17));
                 note.Author = EditorGUILayout.TextField("Author", note.Author, GUILayout.Width(windowWidthIncludingScrollbar - 40), GUILayout.Height(17));
                 note.Info = EditorGUILayout.TextField("Info", note.Info, GUILayout.Width(windowWidthIncludingScrollbar - 40), GUILayout.Height(17));
@@ -82,7 +107,7 @@ public class ShirtWindow : EditorWindow
                             shirtD.Body.name = "BodyObject";
                             if (shirtD.Boobs != null)
                             {
-                                shirtD.Boobs.transform.SetParent(shirtD.Body.transform, true);
+                                shirtD.Boobs.transform.SetParent(shirtD.Body.transform);
                                 shirtD.Boobs.name = "BoobObject";
                             }
                             if (shirtD.LeftUpperArm != null)
