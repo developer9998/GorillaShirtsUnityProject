@@ -38,7 +38,9 @@ public class ShirtExporter : MonoBehaviour
         shirtJSON.descriptor.shirtAuthor = descriptor.Author;
         shirtJSON.descriptor.shirtName = descriptor.Name;
         shirtJSON.descriptor.shirtInfo = descriptor.Info;
-        shirtJSON.config.customColors = descriptor.CustomColors;
+        shirtJSON.config.customColors = descriptor.customColors;
+        shirtJSON.config.SillyNSteady = descriptor.SillyNSteady;
+        shirtJSON.config.isCreator = descriptor.isCreator;
         return shirtJSON;
     }
 

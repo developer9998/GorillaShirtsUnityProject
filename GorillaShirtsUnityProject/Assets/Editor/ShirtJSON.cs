@@ -18,4 +18,6 @@ public class SDescriptor
 public class SConfig
 {
     public bool customColors;
+    public bool isCreator;
+    public bool SillyNSteady;
 }

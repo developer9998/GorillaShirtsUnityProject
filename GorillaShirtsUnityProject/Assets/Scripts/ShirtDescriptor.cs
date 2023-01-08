@@ -14,7 +14,9 @@ namespace GorillaShirts.Data
         public GameObject RightUpperArm;
         public GameObject LeftLowerArm;
         public GameObject RightLowerArm;
-        public bool CustomColors;
+        public bool customColors;
+        public bool isCreator;
+        public bool SillyNSteady;
         public GameObject Boobs;
 
         public bool IsBoob;
