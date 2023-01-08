@@ -33,6 +33,7 @@ public class ShirtWindow : EditorWindow
     protected void OnFocus() => notes = GameObject.FindObjectsOfType<GorillaShirts.Data.ShirtDescriptor>();
     [MenuItem("GorillaShirts/Shirt Exporter")] public static void ShowWindow() => GetWindow(typeof(ShirtWindow), false, "Shirt Exporter", false);
 
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0090:Use 'new(...)'", Justification = "<Pending>")]
     protected void OnGUI()
     {
         var window = GetWindow(typeof(ShirtWindow), false, "Shirt Exporter", false);
