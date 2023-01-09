@@ -1,22 +1,54 @@
 # GorillaShirtsUnityProject
-GorillaShirtsUnityProject is the official Unity project for creating shirts for Gorilla Tag using the [GorillaShirts](https://github.com/developer9998/GorillaShirts) mod.
+This is a Unity Project for my mod GorillaShirts which lets you put on custom shirt cosmetics in the game. With this Unity project it will let you create your own custom shirt cosmetics with a variety of different options.
 
 ## Requirements
-Before you begin creating your custom shirts, you're going to need a few programs first.  
+To run the project you are going to need two things:     
+- Unity Hub (https://public-cdn.cloud.unity3d.com/hub/prod/UnityHubSetup.exe)
+- Unity 2019.3.15 (https://unity.com/releases/editor/whats-new/2019.3.15)
 
-### Unity Hub
-Unity Hub is the place to be when creating Unity projects. This is required for downloading our editor and launching it.       
-Download: https://public-cdn.cloud.unity3d.com/hub/prod/UnityHubSetup.exe
-
-### Unity 2019.3.15 
-Unity 2019.3.15 is the version of Unity that Gorilla Tag uses, it is also the version we modders use to load custom assets into the game, as other versions may not work as intended due to being an older/newer version.   
-Download https://unity.com/releases/editor/whats-new/2019.3.15
-
-### This project 
-This project is required to create custom shirts as it has all the templates, scripts, and exporting utilities.  
-Download: https://github.com/developer9998/GorillaShirtsUnityProject/archive/refs/heads/main.zip
+## Installing the project
+To install the project, go to the top of this page, click on the “Code” button and then click on the “Download ZIP” button that appears in the dropdown menu. Extract the ZIP folder that was downloaded onto your device, we will now call this file the project directory.
 
 ## Opening the project
-Using Unity Hub, both install Unity 2019.3.15 and then open this Unity project with Unity 2019.3.15.   
-If you don't know how to open this Unity project, click on "Open" in the Projects tab and select the project you downloaded.  
+In Unity Hub, click on the “Open” button, first select the project directory, then the folder inside of it, then the folder inside the folder you just clicked onto, or just ``GorillaShirtsUnityProject-main > GorillaShirtsUnityProject-main > GorillaShirtsUnityProject``.
 
+## Locating the scene
+Once the project is opened, the first thing you need to do is go into the correct scene. In the bottom "Assets" tab on default, double click on the "Scenes" folder and then the "SampleScene" option.
+
+## About the ShirtDescriptor
+Once your scene is opened, you should see a Gorilla rig in origin with a ShirtDescriptor component, this component is very important for creating your shirts as it contains several key information about your shirt. 
+- Name
+- Author
+- Information (Description)
+- Options (Custom Colours, Fur Materials, etc.)
+- Objects (Body, Upper Arms, Lower Arms, etc.)
+
+## About the ShirtExporter
+On the top of the Unity window, you should see a button labeled as "GorillaShirts", and then an option labeled "Shirt Exporter", once you click on the option it should open the ShirtExporter. The ShirtExporter is where you export your shirt as a ``.shirt`` file that can be used by GorillaShirts to include your shirt into the mod.
+
+## Creating your shirt
+To create your shirt, you must include the correct descriptor information, the correct parents for the objects, and the correct references.  
+
+## Correct descriptor information
+When creating your shirt you can edit the ShirtDescriptor data at any time by adjusting the variables. Here is a chart which contains the variable and how it plays into how your shirt is exported.
+| Variable | Action |
+| --- | --- |
+| Name | The name of the shirt |
+| Author | The author of the shirt |
+| Info | The information/description of the shirt |
+| Custom Colors | If the shirts colour should match the player colour |
+
+## Correct parents
+For your shirt to be mapped correctly, the objects used for your shirt have to be in a certain object inside of the Gorilla rig. Here is a chart which contains the object type and what the parent of the object should be in the Gorilla rig.
+| Type | Parent | Path |
+| --- | --- | --- |
+| Body | body | ``Gorilla/metarig/body`` |
+| Left Upper Arm | upper_arm.L | ``Gorilla/metarig/body/shoulder.L/upper_arm.L`` |
+| Left Lower Arm | forearm.L | ``Gorilla/metarig/body/shoulder.L/upper_arm.L/forearm.L`` |
+| Right Upper Arm | upper_arm.R | ``Gorilla/metarig/body/shoulder.R/upper_arm.R`` |
+| Right Lower Arm | forearm.R | ``Gorilla/metarig/body/shoulder.R/upper_arm.R/forearm.R`` |
+
+## Correct references
+Finally, you will need to connect the shirt objects to the descriptor, they can't be found on their own. For instance the Body object will go into the Body object variable, the Right Upper Hand object for instance will go into the Right Upper Hand object variable.   
+
+## WIP
