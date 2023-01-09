@@ -21,10 +21,14 @@ Once your scene is opened, you should see a Gorilla rig in origin with a ShirtDe
 - Author
 - Information (Description)
 - Options (Custom Colours, Fur Materials, etc.)
-- Objects (Body, Upper Arms, Lower Arms, etc.)
+- Objects (Body, Upper Arms, Lower Arms, etc.)  
+    
+![image](https://user-images.githubusercontent.com/81720436/211389140-69117d06-aaf9-4297-a2ae-e8dd3d049393.png)
 
 ## About the ShirtExporter
 On the top of the Unity window, you should see a button labeled as "GorillaShirts", and then an option labeled "Shirt Exporter", once you click on the option it should open the ShirtExporter. The ShirtExporter is where you export your shirt as a ``.shirt`` file that can be used by GorillaShirts to include your shirt into the mod.
+     
+![image](https://user-images.githubusercontent.com/81720436/211388818-9dc29af0-9dab-4d63-a445-6a717e47d0ef.png)
 
 ## Creating your shirt
 To create your shirt, you must include the correct descriptor information, the correct parents for the objects, and the correct references.  
@@ -37,6 +41,8 @@ When creating your shirt you can edit the ShirtDescriptor data at any time by ad
 | Author | The author of the shirt |
 | Info | The information/description of the shirt |
 | Custom Colors | If the shirts colour should match the player colour |
+     
+![image](https://user-images.githubusercontent.com/81720436/211389386-6c73124d-cbce-4be3-a882-0562edffc5ca.png)
 
 ## Correct parents
 For your shirt to be mapped correctly, the objects used for your shirt have to be in a certain object inside of the Gorilla rig. Here is a chart which contains the object type and what the parent of the object should be in the Gorilla rig.
@@ -46,9 +52,11 @@ For your shirt to be mapped correctly, the objects used for your shirt have to b
 | Left Upper Arm | upper_arm.L | ``Gorilla/metarig/body/shoulder.L/upper_arm.L`` |
 | Left Lower Arm | forearm.L | ``Gorilla/metarig/body/shoulder.L/upper_arm.L/forearm.L`` |
 | Right Upper Arm | upper_arm.R | ``Gorilla/metarig/body/shoulder.R/upper_arm.R`` |
-| Right Lower Arm | forearm.R | ``Gorilla/metarig/body/shoulder.R/upper_arm.R/forearm.R`` |
+| Right Lower Arm | forearm.R | ``Gorilla/metarig/body/shoulder.R/upper_arm.R/forearm.R`` |              
+    
+![image](https://user-images.githubusercontent.com/81720436/211389085-32f59a8e-3c7c-453c-af8b-9e56bf3cc553.png)
 
 ## Correct references
 Finally, you will need to connect the shirt objects to the descriptor, they can't be found on their own. For instance the Body object will go into the Body object variable, the Right Upper Hand object for instance will go into the Right Upper Hand object variable.   
-
-## WIP
+    
+![image](https://user-images.githubusercontent.com/81720436/211388866-1da3798a-3e14-412a-b39e-5fb99f20de47.png)
