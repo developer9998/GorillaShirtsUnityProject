@@ -25,6 +25,8 @@ namespace GorillaShirts.Data
             properties.Add(serializedObject.FindProperty("Boobs"));
             properties.Add(serializedObject.FindProperty("customColors"));
             properties.Add(serializedObject.FindProperty("FurTextures"));
+            properties.Add(serializedObject.FindProperty("isCreator"));
+            properties.Add(serializedObject.FindProperty("SillyNSteady"));
         }
 
         public override void OnInspectorGUI()
@@ -69,6 +71,8 @@ namespace GorillaShirts.Data
             GUILayout.Label("Optional Data".ToUpper(), boldLabel);
             GUILayout.Space(8);
             EditorGUILayout.PropertyField(properties[9], new GUIContent("Custom Colors"));
+            //EditorGUILayout.PropertyField(properties[11], new GUIContent("isbydev"));
+            //EditorGUILayout.PropertyField(properties[12], new GUIContent("issillyandsteady"));
 
             GUILayout.Space(10);
 

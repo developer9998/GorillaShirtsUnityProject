@@ -68,11 +68,11 @@ public class ShirtWindow : EditorWindow
         middleCenter.alignment = TextAnchor.MiddleCenter;
 
         // Intro
-        GUILayout.Space(14);
+        GUILayout.Space(18);
         GUILayout.Label("GorillaShirts Exporter".ToUpper(), titleLabel);
         GUILayout.Space(3);
         GUILayout.Label("A mod by dev9998".ToUpper(), creditLabel);
-        GUILayout.Space(12);
+        GUILayout.Space(10);
 
         if (notes.Length == 0) GUILayout.Label("No shirt descriptors found!\nIf you're not already, go to Scenes > SampleScene and open it where there should be a descriptor.", middleCenter);
 
@@ -80,10 +80,13 @@ public class ShirtWindow : EditorWindow
         {
             if (note != null)
             {
+                EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
                 GUILayout.Label(string.Join(": ", "GameObject", note.gameObject.name).ToUpper(), boldLabel);
-                note.Name = EditorGUILayout.TextField("Name", note.Name, GUILayout.Width(windowWidthIncludingScrollbar - 40), GUILayout.Height(17));
-                note.Author = EditorGUILayout.TextField("Author", note.Author, GUILayout.Width(windowWidthIncludingScrollbar - 40), GUILayout.Height(17));
-                note.Info = EditorGUILayout.TextField("Info", note.Info, GUILayout.Width(windowWidthIncludingScrollbar - 40), GUILayout.Height(17));
+                GUILayout.Space(5);
+                note.Name = EditorGUILayout.TextField("Shirt Name", note.Name, GUILayout.Width(windowWidthIncludingScrollbar - 40), GUILayout.Height(17));
+                note.Author = EditorGUILayout.TextField("Shirt Author", note.Author, GUILayout.Width(windowWidthIncludingScrollbar - 40), GUILayout.Height(17));
+                note.Info = EditorGUILayout.TextField("Shirt Information", note.Info, GUILayout.Width(windowWidthIncludingScrollbar - 40), GUILayout.Height(17));
+                GUILayout.Space(3);
 
                 if (GUILayout.Button("Export " + note.Name, GUILayout.Width(windowWidthIncludingScrollbar - 40), GUILayout.Height(20)))
                 {
@@ -133,7 +136,7 @@ public class ShirtWindow : EditorWindow
                             }
                             if (shirtD.FurTextures.Count > 0)
                             {
-                                foreach (var furObject in descriptor.FurTextures) 
+                                foreach (var furObject in shirtD.FurTextures) 
                                 {
                                     GameObject colorObject = new GameObject("RegisteredFurTexture");
                                     colorObject.transform.SetParent(furObject.transform, false);
