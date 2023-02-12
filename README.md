@@ -45,7 +45,8 @@ When creating your shirt you can edit the ShirtDescriptor data at any time by ad
 ![image](https://user-images.githubusercontent.com/81720436/211389386-6c73124d-cbce-4be3-a882-0562edffc5ca.png)
 
 ## Correct parents
-For your shirt to be mapped correctly, the objects used for your shirt have to be in a certain object inside of the Gorilla rig. Here is a chart which contains the object type and what the parent of the object should be in the Gorilla rig.
+For your shirt to be mapped correctly, the objects used for your shirt have to be in a certain object inside of the Gorilla rig. Here is a chart which contains the object type and what the parent of the object should be in the Gorilla rig.   
+**NOTE:** Boob objects get parented to the Body object.
 | Type | Parent | Path |
 | --- | --- | --- |
 | Body | body | ``Gorilla/metarig/body`` |
