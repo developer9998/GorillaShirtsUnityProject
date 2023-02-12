@@ -33,7 +33,6 @@ public class ShirtWindow : EditorWindow
     protected void OnFocus() => notes = GameObject.FindObjectsOfType<GorillaShirts.Data.ShirtDescriptor>();
     [MenuItem("GorillaShirts/Shirt Exporter")] public static void ShowWindow() => GetWindow(typeof(ShirtWindow), false, "Shirt Exporter", false);
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0090:Use 'new(...)'", Justification = "<Pending>")]
     protected void OnGUI()
     {
         var window = GetWindow(typeof(ShirtWindow), false, "Shirt Exporter", false);
@@ -133,6 +132,21 @@ public class ShirtWindow : EditorWindow
                             {
                                 shirtD.RightLowerArm.transform.SetParent(baseObject.transform, false);
                                 shirtD.RightLowerArm.name = "RLowerArm";
+                            }
+                            if (shirtD.LeftHand != null)
+                            {
+                                shirtD.LeftHand.transform.SetParent(baseObject.transform, false);
+                                shirtD.LeftHand.name = "LHand";
+                            }
+                            if (shirtD.RightHand != null)
+                            {
+                                shirtD.RightHand.transform.SetParent(baseObject.transform, false);
+                                shirtD.RightHand.name = "RHand";
+                            }
+                            if (shirtD.Head != null)
+                            {
+                                shirtD.Head.transform.SetParent(baseObject.transform, false);
+                                shirtD.Head.name = "HeadObject";
                             }
                             if (shirtD.FurTextures.Count > 0)
                             {

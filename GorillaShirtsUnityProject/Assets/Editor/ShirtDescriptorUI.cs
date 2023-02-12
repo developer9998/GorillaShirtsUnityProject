@@ -1,32 +1,33 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-using System.Xml.Linq;
 
 namespace GorillaShirts.Data 
 {
     [CustomEditor(typeof(ShirtDescriptor))]
     public class ShirtDescriptorUI : Editor
     {
-        private List<SerializedProperty> properties = new List<SerializedProperty>();
+        private readonly List<SerializedProperty> properties = new List<SerializedProperty>();
 
         protected void OnEnable()
         {
             if (properties.Count != 0) properties.Clear();
-            properties.Add(serializedObject.FindProperty("Name"));
+            properties.Add(serializedObject.FindProperty("Name")); // 0
             properties.Add(serializedObject.FindProperty("Author"));
-            properties.Add(serializedObject.FindProperty("Info"));
+            properties.Add(serializedObject.FindProperty("Info")); // 2
             properties.Add(serializedObject.FindProperty("Body"));
-            properties.Add(serializedObject.FindProperty("LeftUpperArm"));
+            properties.Add(serializedObject.FindProperty("LeftUpperArm")); // 4
             properties.Add(serializedObject.FindProperty("RightUpperArm"));
-            properties.Add(serializedObject.FindProperty("LeftLowerArm"));
+            properties.Add(serializedObject.FindProperty("LeftLowerArm")); // 6
             properties.Add(serializedObject.FindProperty("RightLowerArm"));
-            properties.Add(serializedObject.FindProperty("Boobs"));
+            properties.Add(serializedObject.FindProperty("Boobs")); // 8
             properties.Add(serializedObject.FindProperty("customColors"));
-            properties.Add(serializedObject.FindProperty("FurTextures"));
+            properties.Add(serializedObject.FindProperty("FurTextures")); // 10
             properties.Add(serializedObject.FindProperty("isCreator"));
-            properties.Add(serializedObject.FindProperty("SillyNSteady"));
+            properties.Add(serializedObject.FindProperty("SillyNSteady")); // 12
+            properties.Add(serializedObject.FindProperty("Head"));
+            properties.Add(serializedObject.FindProperty("LeftHand")); // 14
+            properties.Add(serializedObject.FindProperty("RightHand"));
         }
 
         public override void OnInspectorGUI()
@@ -71,8 +72,8 @@ namespace GorillaShirts.Data
             GUILayout.Label("Optional Data".ToUpper(), boldLabel);
             GUILayout.Space(8);
             EditorGUILayout.PropertyField(properties[9], new GUIContent("Custom Colors"));
-            //EditorGUILayout.PropertyField(properties[11], new GUIContent("isbydev"));
-            //EditorGUILayout.PropertyField(properties[12], new GUIContent("issillyandsteady"));
+            EditorGUILayout.PropertyField(properties[11], new GUIContent("isbydev"));
+            EditorGUILayout.PropertyField(properties[12], new GUIContent("issillyandsteady"));
 
             GUILayout.Space(10);
 
@@ -85,6 +86,7 @@ namespace GorillaShirts.Data
             {
                 EditorGUI.indentLevel++;
                 GUILayout.Space(1);
+                EditorGUILayout.PropertyField(properties[13], new GUIContent("Head"));
                 EditorGUILayout.PropertyField(properties[8], new GUIContent("Boobs"));
                 GUILayout.Space(1);
                 EditorGUI.indentLevel--;
@@ -96,6 +98,14 @@ namespace GorillaShirts.Data
                 EditorGUI.indentLevel++;
                 GUILayout.Space(1);
                 EditorGUILayout.PropertyField(properties[6], new GUIContent("Left Lower Arm"));
+                if (properties[6].objectReferenceValue != null)
+                {
+                    EditorGUI.indentLevel++;
+                    GUILayout.Space(1);
+                    EditorGUILayout.PropertyField(properties[14], new GUIContent("Left Hand"));
+                    GUILayout.Space(1);
+                    EditorGUI.indentLevel--;
+                }
                 GUILayout.Space(1);
                 EditorGUI.indentLevel--;
             }
@@ -106,6 +116,14 @@ namespace GorillaShirts.Data
                 EditorGUI.indentLevel++;
                 GUILayout.Space(1);
                 EditorGUILayout.PropertyField(properties[7], new GUIContent("Right Lower Arm"));
+                if (properties[7].objectReferenceValue != null)
+                {
+                    EditorGUI.indentLevel++;
+                    GUILayout.Space(1);
+                    EditorGUILayout.PropertyField(properties[15], new GUIContent("Right Hand"));
+                    GUILayout.Space(1);
+                    EditorGUI.indentLevel--;
+                }
                 GUILayout.Space(1);
                 EditorGUI.indentLevel--;
             }
