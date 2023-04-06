@@ -33,6 +33,18 @@ public class ShirtWindow : EditorWindow
     protected void OnFocus() => notes = GameObject.FindObjectsOfType<GorillaShirts.Data.ShirtDescriptor>();
     [MenuItem("GorillaShirts/Shirt Exporter")] public static void ShowWindow() => GetWindow(typeof(ShirtWindow), false, "Shirt Exporter", false);
 
+    public void SetParentTest(Transform obj, Transform parent, bool world)
+    {
+        if (obj != null && parent != null)
+        {
+            try
+            {
+                obj.transform.SetParent(parent.transform, world);
+            }
+            catch { }
+        }
+    }
+
     protected void OnGUI()
     {
         var window = GetWindow(typeof(ShirtWindow), false, "Shirt Exporter", false);
@@ -100,6 +112,24 @@ public class ShirtWindow : EditorWindow
                         {
                             Debug.Log("Exporting shirt with path: " + path);
 
+                            GameObject mBody = GameObject.Find("Gorilla Rig/body");
+                            GameObject mHead = GameObject.Find("Gorilla Rig/body/head");
+                            GameObject b1 = GameObject.Find("Gorilla Rig/body/shoulder.L/upper_arm.L");
+                            GameObject b2 = GameObject.Find("Gorilla Rig/body/shoulder.L/upper_arm.L/forearm.L");
+                            GameObject bHand1 = GameObject.Find("Gorilla Rig/body/shoulder.L/upper_arm.L/forearm.L/hand.L");
+                            GameObject b3 = GameObject.Find("Gorilla Rig/body/shoulder.R/upper_arm.R");
+                            GameObject b4 = GameObject.Find("Gorilla Rig/body/shoulder.R/upper_arm.R/forearm.R");
+                            GameObject bHand2 = GameObject.Find("Gorilla Rig/body/shoulder.R/upper_arm.R/forearm.R/hand.R");
+
+                            descriptor.Body.transform.SetParent(mBody.transform ?? null, true);
+                            SetParentTest(descriptor.Head == null ? null : descriptor.Head.transform, mHead.transform ?? null, true);
+                            SetParentTest(descriptor.LeftUpperArm == null ? null : descriptor.LeftUpperArm.transform, b1.transform ?? null, true);
+                            SetParentTest(descriptor.LeftLowerArm == null ? null : descriptor.LeftLowerArm.transform, b2.transform ?? null, true);
+                            SetParentTest(descriptor.LeftHand == null ? null : descriptor.LeftHand.transform, bHand1.transform ?? null, true);
+                            SetParentTest(descriptor.RightUpperArm == null ? null : descriptor.RightUpperArm.transform, b3.transform ?? null, true);
+                            SetParentTest(descriptor.RightLowerArm == null ? null : descriptor.RightLowerArm.transform, b4.transform ?? null, true);
+                            SetParentTest(descriptor.RightHand == null ? null : descriptor.RightHand.transform, bHand2.transform ?? null, true);
+
                             GameObject newO = Instantiate(noteObject);
                             ShirtDescriptor shirtD = newO.GetComponent<ShirtDescriptor>();
 
@@ -150,7 +180,7 @@ public class ShirtWindow : EditorWindow
                             }
                             if (shirtD.FurTextures.Count > 0)
                             {
-                                foreach (var furObject in shirtD.FurTextures) 
+                                foreach (var furObject in shirtD.FurTextures)
                                 {
                                     GameObject colorObject = new GameObject("RegisteredFurTexture");
                                     colorObject.transform.SetParent(furObject.transform, false);
