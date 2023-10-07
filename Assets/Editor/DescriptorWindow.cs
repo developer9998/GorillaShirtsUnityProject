@@ -39,26 +39,27 @@ namespace GorillaShirts.Data
             EditorGUILayout.PropertyField(PropertyFromName("Head"), new GUIContent("Head"));
             GUILayout.Space(2);
             EditorGUILayout.PropertyField(PropertyFromName("Body"), new GUIContent("Body"));
-            if (PrefWindow.DeveloperModeTemp)
-            {
-                GUILayout.Space(2);
-                EditorGUILayout.PropertyField(PropertyFromName("Boobs"), new GUIContent("Boobs"));
-            }
             GUILayout.Space(8);
 
             EditorGUILayout.PropertyField(PropertyFromName("LeftUpperArm"), new GUIContent("Left Arm (Upper)"));
             GUILayout.Space(2);
+            EditorGUI.indentLevel++;
             EditorGUILayout.PropertyField(PropertyFromName("LeftLowerArm"), new GUIContent("Left Arm (Lower)"));
             GUILayout.Space(2);
+            EditorGUI.indentLevel++;
             EditorGUILayout.PropertyField(PropertyFromName("LeftHand"), new GUIContent("Left Hand"));
             GUILayout.Space(8);
+            EditorGUI.indentLevel -= 2;
 
             EditorGUILayout.PropertyField(PropertyFromName("RightUpperArm"), new GUIContent("Right Arm (Upper)"));
             GUILayout.Space(2);
+            EditorGUI.indentLevel++;
             EditorGUILayout.PropertyField(PropertyFromName("RightLowerArm"), new GUIContent("Right Arm (Lower)"));
             GUILayout.Space(2);
+            EditorGUI.indentLevel++;
             EditorGUILayout.PropertyField(PropertyFromName("RightHand"), new GUIContent("Right Hand"));
             GUILayout.Space(12);
+            EditorGUI.indentLevel -= 2;
 
             EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
             GUILayout.Label("Optional Data", boldLabel);
@@ -66,10 +67,10 @@ namespace GorillaShirts.Data
 
             EditorGUILayout.PropertyField(PropertyFromName("customColors"), new GUIContent("Custom Colour"));
             GUILayout.Space(2);
-            //EditorGUILayout.PropertyField(PropertyFromName("invisibility"), new GUIContent("Invisibility"));
-            //GUILayout.Space(12);
+            EditorGUILayout.PropertyField(PropertyFromName("invisibility"), new GUIContent("Invisibility"));
+            GUILayout.Space(2);
 
-            if (PrefWindow.DeveloperModeTemp)
+            if (PrefWindow.DeveloperMode)
             {
                 EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
                 GUILayout.Label("Developer Data", boldLabel);
