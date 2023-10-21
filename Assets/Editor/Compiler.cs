@@ -32,23 +32,28 @@ public class Compiler : MonoBehaviour
 {
     public static ShirtJSON ShirtToShirtJSON(GorillaShirts.Data.ShirtDescriptor descriptor)
     {
-        ShirtJSON shirtJSON = new ShirtJSON();
-        shirtJSON.descriptor = new SDescriptor();
-        shirtJSON.config = new SConfig();
-        shirtJSON.descriptor.shirtAuthor = descriptor.Author;
-        shirtJSON.descriptor.shirtName = descriptor.Name;
-        shirtJSON.descriptor.shirtInfo = descriptor.Info;
-        shirtJSON.config.customColors = descriptor.customColors;
-        shirtJSON.config.invisibility = descriptor.invisibility;
-        shirtJSON.config.SillyNSteady = descriptor.SillyNSteady;
-        shirtJSON.config.isCreator = descriptor.isCreator;
+        ShirtJSON shirtJSON = new ShirtJSON
+        {
+            packName = descriptor.Pack,
+            infoDescriptor = new SDescriptor()
+            {
+                shirtAuthor = descriptor.Author,
+                shirtName = descriptor.Name,
+                shirtDescription = descriptor.Info
+            },
+            infoConfig = new SConfig()
+            {
+                customColors = descriptor.customColors,
+                invisibility = descriptor.invisibility
+            }
+        };
         return shirtJSON;
     }
 
     public static void ExportShirt(GameObject gameObject, string path, ShirtJSON shirtJSON)
     {
         string folderPath = Path.GetDirectoryName(path);
-        string fileName = Path.GetFileNameWithoutExtension(path) + "_file";
+        string fileName = Path.GetFileNameWithoutExtension(path) + "_Asset";
 
         Selection.activeObject = gameObject;
         EditorSceneManager.MarkSceneDirty(gameObject.scene);
@@ -63,13 +68,14 @@ public class Compiler : MonoBehaviour
         BuildPipeline.BuildAssetBundles(Application.temporaryCachePath, new AssetBundleBuild[] { assetBundleBuild }, 0, BuildTarget.StandaloneWindows64);
         EditorPrefs.SetString("currentBuildingAssetBundlePath", folderPath);
 
-        shirtJSON.fileName = fileName;
+        shirtJSON.assetName = fileName;
         string json = JsonUtility.ToJson(shirtJSON, true);
-        File.WriteAllText(Application.temporaryCachePath + "/package.json", json);
+        File.WriteAllText(Application.temporaryCachePath + "/ShirtData.json", json);
         AssetDatabase.DeleteAsset(updatedPath);
 
         if (File.Exists(Application.temporaryCachePath + "/tempZip.zip")) File.Delete(Application.temporaryCachePath + "/tempZip.zip");
-        CreateZipFile(Application.temporaryCachePath + "/tempZip.zip", new List<string> { Application.temporaryCachePath + "/" + fileName, Application.temporaryCachePath + "/package.json" });
+        CreateZipFile(Application.temporaryCachePath + "/tempZip.zip", new List<string> { Application.temporaryCachePath + "/" + fileName, Application.temporaryCachePath + "/ShirtData.json" });
+        
         if (File.Exists(path)) File.Delete(path);
         File.Move(Application.temporaryCachePath + "/tempZip.zip", path);
         DestroyImmediate(gameObject);

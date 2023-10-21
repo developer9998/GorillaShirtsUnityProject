@@ -27,6 +27,7 @@ using UnityEditor.SceneManagement;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using GorillaShirts.Data;
+using System.Linq;
 
 public class ExportWindow : EditorWindow
 {
@@ -59,7 +60,7 @@ public class ExportWindow : EditorWindow
         var window = GetWindow(typeof(ExportWindow), false, "Shirt Exporter", false);
 
         int ScrollSpace = 16 + 20 + 16 + 17 + 17 + 20 + 20;
-        foreach (var note in notes) if (note != null) ScrollSpace += 16 + 17 + 17 + 20 + 20 + 21 + 21;
+        ScrollSpace += (16 + 17 + 17 + 20 + 20 + 21 + 21) * (notes.Where(a => a != null).Count());
 
         float currentWindowWidth = EditorGUIUtility.currentViewWidth;
         float windowWidthIncludingScrollbar = currentWindowWidth;
@@ -76,16 +77,22 @@ public class ExportWindow : EditorWindow
                 GUILayout.Space(5.5f);
                 note.Name = EditorGUILayout.TextField("Name", note.Name, GUILayout.Width(windowWidthIncludingScrollbar - 40), GUILayout.Height(17));
                 GUILayout.Space(2f);
-                note.Author = EditorGUILayout.TextField("Author", note.Author, GUILayout.Width(windowWidthIncludingScrollbar - 40), GUILayout.Height(17));
-                GUILayout.Space(2f);
-                note.Info = EditorGUILayout.TextField("Description", note.Info, GUILayout.Width(windowWidthIncludingScrollbar - 40), GUILayout.Height(17));
+                note.Pack = EditorGUILayout.TextField("Pack", note.Pack, GUILayout.Width(windowWidthIncludingScrollbar - 40), GUILayout.Height(17));
                 GUILayout.Space(5f);
 
                 if (GUILayout.Button("Export " + note.Name, GUILayout.Width(windowWidthIncludingScrollbar - 40), GUILayout.Height(20)))
                 {
                     GameObject noteObject = note.gameObject;
                     noteObject.TryGetComponent(out ShirtDescriptor descriptor);
-                    if (noteObject != null && note != null && descriptor.Body != null && descriptor.Name != string.Empty && descriptor.Author != string.Empty && descriptor.Info != string.Empty)
+
+                    if (descriptor != null && (string.IsNullOrEmpty(descriptor.Pack) || string.IsNullOrWhiteSpace(descriptor.Pack)))
+                    {
+                        bool packNotice = EditorUtility.DisplayDialog("Export Warning", "Please make sure a valid name is assigned to the pack attached to this shirt, as it cannot be empty.", "Set it to \"Custom\"", "Close");
+                        if (!packNotice) return;
+                        descriptor.Pack = "Custom";
+                    }
+
+                    if (descriptor != null && descriptor.Body != null && descriptor.Name != string.Empty && descriptor.Author != string.Empty && descriptor.Info != string.Empty)
                     {
                         Debug.Log("Attempting to save Shirt file");
                         string path = EditorUtility.SaveFilePanel("Save Shirt file", "", note.Name + ".shirt", "Shirt");
@@ -108,13 +115,6 @@ public class ExportWindow : EditorWindow
                             shirtD.Body.name = "BodyObject";
                             foreach (var FurObject in shirtD.Body.transform.GetComponentsInChildren<FurMatch>()) furObjects.Add(FurObject);
 
-                            // Boobs (01110111 01101000 01111001 00100000 01100100 01101001 01100100 00100000 01101001 00100000 01100100 01101111 00100000 01110100 01101000 01101001 01110011)
-                            if (shirtD.Boobs != null)
-                            {
-                                shirtD.Boobs.transform.SetParent(shirtD.Body.transform);
-                                shirtD.Boobs.name = "BoobObject";
-                                foreach (var FurObject in shirtD.Boobs.transform.GetComponentsInChildren<FurMatch>()) furObjects.Add(FurObject);
-                            }
                             // Left arm (Upper)
                             if (shirtD.LeftUpperArm != null)
                             {
@@ -184,16 +184,16 @@ public class ExportWindow : EditorWindow
                             AssetDatabase.Refresh();
                             EditorSceneManager.SaveScene(SceneManager.GetActiveScene());
 
-                            bool reveal = EditorUtility.DisplayDialog("Export success", "Your shirt was exported successfully.", "Reveal in path", "No thanks");
+                            bool reveal = EditorUtility.DisplayDialog("Export Success", "Your shirt was exported successfully!", "Open", "Close");
                             if (reveal)
                             {
                                 Debug.Log("Revealing path");
                                 EditorUtility.RevealInFinder(path);
                             }
                         }
-                        else EditorUtility.DisplayDialog("Export failed", "Please set a valid path", "Okay");
+                        else EditorUtility.DisplayDialog("Export Warning", "Please assign a valid path as to where your shirt will be located at.", "Close");
                     }
-                    else EditorUtility.DisplayDialog("Export failed", "Please ensure your descriptor exists and you filled out a Name, Author, Info, and a Body object", "Okay");
+                    else EditorUtility.DisplayDialog("Export Warning", "Plase assign a Name, Author, Description, and Body when creating a shirt.", "Close");
                 }
                 GUILayout.Space(20);
             }

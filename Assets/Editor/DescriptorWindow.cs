@@ -12,75 +12,57 @@ namespace GorillaShirts.Data
 
         protected void OnEnable()
         {
-            boldLabel = new GUIStyle
+            boldLabel ??= new GUIStyle
             {
                 fontStyle = FontStyle.Bold,
-                fontSize = 20
+                fontSize = 16
             };
         }
 
         public override void OnInspectorGUI()
         {
-            GUILayout.Space(11);
-            GUILayout.Label("Required Data", boldLabel);
-            GUILayout.Space(11);
+            GUILayout.Space(10);
+            EditorGUILayout.PropertyField(PropertyFromName("Pack"), new GUIContent("Shirt Pack", "The pack of your shirt\n[Required]"));
 
-            EditorGUILayout.PropertyField(PropertyFromName("Name"), new GUIContent("Name"));
-            GUILayout.Space(2);
-            EditorGUILayout.PropertyField(PropertyFromName("Author"), new GUIContent("Author"));
-            GUILayout.Space(2);
-            EditorGUILayout.PropertyField(PropertyFromName("Info"), new GUIContent("Description"));
             GUILayout.Space(12);
-
-            EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
-            GUILayout.Label("Objects", boldLabel);
+            GUILayout.Label("Mandatory Data", boldLabel);
             GUILayout.Space(8);
 
-            EditorGUILayout.PropertyField(PropertyFromName("Head"), new GUIContent("Head"));
+            EditorGUILayout.PropertyField(PropertyFromName("Name"), new GUIContent("Name", "The name of your shirt\n[Required]"));
             GUILayout.Space(2);
-            EditorGUILayout.PropertyField(PropertyFromName("Body"), new GUIContent("Body"));
-            GUILayout.Space(8);
+            EditorGUILayout.PropertyField(PropertyFromName("Author"), new GUIContent("Author", "The author of your shirt\n[Required]"));
+            GUILayout.Space(2);
+            EditorGUILayout.PropertyField(PropertyFromName("Info"), new GUIContent("Info", "The description of your shirt\n[Required]"));
 
-            EditorGUILayout.PropertyField(PropertyFromName("LeftUpperArm"), new GUIContent("Left Arm (Upper)"));
-            GUILayout.Space(2);
-            EditorGUI.indentLevel++;
-            EditorGUILayout.PropertyField(PropertyFromName("LeftLowerArm"), new GUIContent("Left Arm (Lower)"));
-            GUILayout.Space(2);
-            EditorGUI.indentLevel++;
-            EditorGUILayout.PropertyField(PropertyFromName("LeftHand"), new GUIContent("Left Hand"));
-            GUILayout.Space(8);
-            EditorGUI.indentLevel -= 2;
-
-            EditorGUILayout.PropertyField(PropertyFromName("RightUpperArm"), new GUIContent("Right Arm (Upper)"));
-            GUILayout.Space(2);
-            EditorGUI.indentLevel++;
-            EditorGUILayout.PropertyField(PropertyFromName("RightLowerArm"), new GUIContent("Right Arm (Lower)"));
-            GUILayout.Space(2);
-            EditorGUI.indentLevel++;
-            EditorGUILayout.PropertyField(PropertyFromName("RightHand"), new GUIContent("Right Hand"));
             GUILayout.Space(12);
-            EditorGUI.indentLevel -= 2;
-
-            EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
             GUILayout.Label("Optional Data", boldLabel);
             GUILayout.Space(8);
 
             EditorGUILayout.PropertyField(PropertyFromName("customColors"), new GUIContent("Custom Colour"));
             GUILayout.Space(2);
             EditorGUILayout.PropertyField(PropertyFromName("invisibility"), new GUIContent("Invisibility"));
-            GUILayout.Space(2);
 
-            if (PrefWindow.DeveloperMode)
-            {
-                EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
-                GUILayout.Label("Developer Data", boldLabel);
-                GUILayout.Space(8);
+            GUILayout.Space(12);
+            GUILayout.Label("Objects", boldLabel);
+            GUILayout.Space(8);
 
-                EditorGUILayout.PropertyField(PropertyFromName("isCreator"), new GUIContent("Verified"));
-                GUILayout.Space(2);
-                EditorGUILayout.PropertyField(PropertyFromName("SillyNSteady"), new GUIContent("Silly & Steady"));
-                GUILayout.Space(12);
-            }
+            EditorGUILayout.PropertyField(PropertyFromName("Head"), new GUIContent("Head"));
+            GUILayout.Space(4);
+            EditorGUILayout.PropertyField(PropertyFromName("Body"), new GUIContent("Body", "[Required]"));
+            GUILayout.Space(8);
+
+            EditorGUILayout.PropertyField(PropertyFromName("LeftUpperArm"), new GUIContent("Left Arm (Upper)"));
+            GUILayout.Space(4);
+            EditorGUILayout.PropertyField(PropertyFromName("LeftLowerArm"), new GUIContent("Left Arm (Lower)"));
+            GUILayout.Space(4);
+            EditorGUILayout.PropertyField(PropertyFromName("LeftHand"), new GUIContent("Left Hand"));
+            GUILayout.Space(8);
+
+            EditorGUILayout.PropertyField(PropertyFromName("RightUpperArm"), new GUIContent("Right Arm (Upper)"));
+            GUILayout.Space(4);
+            EditorGUILayout.PropertyField(PropertyFromName("RightLowerArm"), new GUIContent("Right Arm (Lower)"));
+            GUILayout.Space(4);
+            EditorGUILayout.PropertyField(PropertyFromName("RightHand"), new GUIContent("Right Hand"));
 
             serializedObject.ApplyModifiedProperties();
         }

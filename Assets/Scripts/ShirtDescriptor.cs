@@ -7,6 +7,9 @@ namespace GorillaShirts.Data
     [AddComponentMenu("GorillaShirts/ShirtDescriptor")]
     public class ShirtDescriptor : MonoBehaviour
     {
+        // Pack
+        public string Pack;
+
         // Base data
         public string Name;
         public string Author;
@@ -26,8 +29,6 @@ namespace GorillaShirts.Data
         // Additional data
         public bool customColors;
         public bool invisibility;
-        public bool isCreator;
-        public bool SillyNSteady;
         public List<GameObject> FurTextures;
     }
 
