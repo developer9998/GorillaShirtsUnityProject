@@ -169,7 +169,7 @@ public class ExportWindow : EditorWindow
                             foreach (var furObject in furObjects)
                             {
                                 if (furObject == null) continue;
-                                GameObject colorObject = new GameObject("RegisteredFurTexture");
+                                GameObject colorObject = new GameObject("G_Fur" + ((int)furObject.mode).ToString());
                                 colorObject.transform.SetParent(furObject.transform, false);
                                 DestroyImmediate(furObject);
                             }
