@@ -32,7 +32,7 @@ public class Compiler : MonoBehaviour
 {
     public static ShirtJSON ShirtToShirtJSON(GorillaShirts.Data.ShirtDescriptor descriptor)
     {
-        ShirtJSON shirtJSON = new ShirtJSON
+        ShirtJSON shirtJSON = new()
         {
             packName = descriptor.Pack,
             infoDescriptor = new SDescriptor()
@@ -44,7 +44,10 @@ public class Compiler : MonoBehaviour
             infoConfig = new SConfig()
             {
                 customColors = descriptor.customColors,
-                invisibility = descriptor.invisibility
+                invisibility = descriptor.invisibility,
+                wobbleLoose = descriptor.wobbleLoose,
+                wobbleLockHorizontal = descriptor.wobbleLockHorizontal,
+                wobbleLockVertical = descriptor.wobbleLockVertical
             }
         };
         return shirtJSON;

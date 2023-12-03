@@ -1,9 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-[AddComponentMenu("GorillaShirts/FurMatch")]
-public class FurMatch : MonoBehaviour
+[AddComponentMenu("GorillaShirts/Cosmetics/Fur")]
+[RequireComponent(typeof(Renderer))]
+public class Fur : ShirtComponent
 {
     public enum FurMode
     {

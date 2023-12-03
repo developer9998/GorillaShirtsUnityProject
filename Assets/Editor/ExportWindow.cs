@@ -105,73 +105,216 @@ public class ExportWindow : EditorWindow
                             ShirtDescriptor shirtD = newO.GetComponent<ShirtDescriptor>();
 
                             EditorUtility.SetDirty(shirtD);
-                            GameObject baseObject = new GameObject("TempShirtObject");
+                            GameObject baseObject = new("TempShirtObject");
 
                             #region Get objects
 
+                            List<Fur> furObjects = new();
+                            List<WobbleBone> wobbleObjects = new();
+                            List<IgnoreWobbleBone> ignoreWobbleObjects = new();
+
                             // Body
-                            List<FurMatch> furObjects = new List<FurMatch>();
+
                             shirtD.Body.transform.SetParent(baseObject.transform, false);
                             shirtD.Body.name = "BodyObject";
-                            foreach (var FurObject in shirtD.Body.transform.GetComponentsInChildren<FurMatch>()) furObjects.Add(FurObject);
+
+                            foreach (var shirtComponent in shirtD.Body.GetComponentsInChildren<ShirtComponent>())
+                            {
+                                if (shirtComponent.GetComponent<Fur>())
+                                {
+                                    furObjects.Add(shirtComponent.GetComponent<Fur>());
+                                }
+                                if (shirtComponent.GetComponent<WobbleBone>())
+                                {
+                                    wobbleObjects.Add(shirtComponent.GetComponent<WobbleBone>());
+                                }
+                                else if (shirtComponent.GetComponent<IgnoreWobbleBone>())
+                                {
+                                    ignoreWobbleObjects.Add(shirtComponent.GetComponent<IgnoreWobbleBone>());
+                                }
+                            }
 
                             // Left arm (Upper)
                             if (shirtD.LeftUpperArm != null)
                             {
                                 shirtD.LeftUpperArm.transform.SetParent(baseObject.transform, false);
                                 shirtD.LeftUpperArm.name = "LUpperArm";
-                                foreach (var FurObject in shirtD.LeftUpperArm.transform.GetComponentsInChildren<FurMatch>()) furObjects.Add(FurObject);
+
+                                foreach (var shirtComponent in shirtD.LeftUpperArm.GetComponentsInChildren<ShirtComponent>())
+                                {
+                                    if (shirtComponent.GetComponent<Fur>())
+                                    {
+                                        furObjects.Add(shirtComponent.GetComponent<Fur>());
+                                    }
+                                    if (shirtComponent.GetComponent<WobbleBone>())
+                                    {
+                                        wobbleObjects.Add(shirtComponent.GetComponent<WobbleBone>());
+                                    }
+                                    else if (shirtComponent.GetComponent<IgnoreWobbleBone>())
+                                    {
+                                        ignoreWobbleObjects.Add(shirtComponent.GetComponent<IgnoreWobbleBone>());
+                                    }
+                                }
                             }
                             // Right arm (Upper)
                             if (shirtD.RightUpperArm != null)
                             {
                                 shirtD.RightUpperArm.transform.SetParent(baseObject.transform, false);
                                 shirtD.RightUpperArm.name = "RUpperArm";
-                                foreach (var FurObject in shirtD.RightUpperArm.transform.GetComponentsInChildren<FurMatch>()) furObjects.Add(FurObject);
+
+                                foreach (var shirtComponent in shirtD.RightUpperArm.GetComponentsInChildren<ShirtComponent>())
+                                {
+                                    if (shirtComponent.GetComponent<Fur>())
+                                    {
+                                        furObjects.Add(shirtComponent.GetComponent<Fur>());
+                                    }
+                                    if (shirtComponent.GetComponent<WobbleBone>())
+                                    {
+                                        wobbleObjects.Add(shirtComponent.GetComponent<WobbleBone>());
+                                    }
+                                    else if (shirtComponent.GetComponent<IgnoreWobbleBone>())
+                                    {
+                                        ignoreWobbleObjects.Add(shirtComponent.GetComponent<IgnoreWobbleBone>());
+                                    }
+                                }
                             }
                             // Left arm (Lower)
                             if (shirtD.LeftLowerArm != null)
                             {
                                 shirtD.LeftLowerArm.transform.SetParent(baseObject.transform, false);
                                 shirtD.LeftLowerArm.name = "LLowerArm";
-                                foreach (var FurObject in shirtD.LeftLowerArm.transform.GetComponentsInChildren<FurMatch>()) furObjects.Add(FurObject);
+
+                                foreach (var shirtComponent in shirtD.LeftLowerArm.GetComponentsInChildren<ShirtComponent>())
+                                {
+                                    if (shirtComponent.GetComponent<Fur>())
+                                    {
+                                        furObjects.Add(shirtComponent.GetComponent<Fur>());
+                                    }
+                                    if (shirtComponent.GetComponent<WobbleBone>())
+                                    {
+                                        wobbleObjects.Add(shirtComponent.GetComponent<WobbleBone>());
+                                    }
+                                    else if (shirtComponent.GetComponent<IgnoreWobbleBone>())
+                                    {
+                                        ignoreWobbleObjects.Add(shirtComponent.GetComponent<IgnoreWobbleBone>());
+                                    }
+                                }
                             }
                             // Right arm (Lower)
                             if (shirtD.RightLowerArm != null)
                             {
                                 shirtD.RightLowerArm.transform.SetParent(baseObject.transform, false);
                                 shirtD.RightLowerArm.name = "RLowerArm";
-                                foreach (var FurObject in shirtD.RightLowerArm.transform.GetComponentsInChildren<FurMatch>()) furObjects.Add(FurObject);
+
+                                foreach (var shirtComponent in shirtD.RightLowerArm.GetComponentsInChildren<ShirtComponent>())
+                                {
+                                    if (shirtComponent.GetComponent<Fur>())
+                                    {
+                                        furObjects.Add(shirtComponent.GetComponent<Fur>());
+                                    }
+                                    if (shirtComponent.GetComponent<WobbleBone>())
+                                    {
+                                        wobbleObjects.Add(shirtComponent.GetComponent<WobbleBone>());
+                                    }
+                                    else if (shirtComponent.GetComponent<IgnoreWobbleBone>())
+                                    {
+                                        ignoreWobbleObjects.Add(shirtComponent.GetComponent<IgnoreWobbleBone>());
+                                    }
+                                }
                             }
                             // Left hand
                             if (shirtD.LeftHand != null)
                             {
                                 shirtD.LeftHand.transform.SetParent(baseObject.transform, false);
                                 shirtD.LeftHand.name = "LHand";
-                                foreach (var FurObject in shirtD.LeftHand.transform.GetComponentsInChildren<FurMatch>()) furObjects.Add(FurObject);
+
+                                foreach (var shirtComponent in shirtD.LeftHand.GetComponentsInChildren<ShirtComponent>())
+                                {
+                                    if (shirtComponent.GetComponent<Fur>())
+                                    {
+                                        furObjects.Add(shirtComponent.GetComponent<Fur>());
+                                    }
+                                    if (shirtComponent.GetComponent<WobbleBone>())
+                                    {
+                                        wobbleObjects.Add(shirtComponent.GetComponent<WobbleBone>());
+                                    }
+                                    else if (shirtComponent.GetComponent<IgnoreWobbleBone>())
+                                    {
+                                        ignoreWobbleObjects.Add(shirtComponent.GetComponent<IgnoreWobbleBone>());
+                                    }
+                                }
                             }
                             // Right hand
                             if (shirtD.RightHand != null)
                             {
                                 shirtD.RightHand.transform.SetParent(baseObject.transform, false);
                                 shirtD.RightHand.name = "RHand";
-                                foreach (var FurObject in shirtD.RightHand.transform.GetComponentsInChildren<FurMatch>()) furObjects.Add(FurObject);
+
+                                foreach (var shirtComponent in shirtD.RightHand.GetComponentsInChildren<ShirtComponent>())
+                                {
+                                    if (shirtComponent.GetComponent<Fur>())
+                                    {
+                                        furObjects.Add(shirtComponent.GetComponent<Fur>());
+                                    }
+                                    if (shirtComponent.GetComponent<WobbleBone>())
+                                    {
+                                        wobbleObjects.Add(shirtComponent.GetComponent<WobbleBone>());
+                                    }
+                                    else if (shirtComponent.GetComponent<IgnoreWobbleBone>())
+                                    {
+                                        ignoreWobbleObjects.Add(shirtComponent.GetComponent<IgnoreWobbleBone>());
+                                    }
+                                }
                             }
                             // Head
                             if (shirtD.Head != null)
                             {
                                 shirtD.Head.transform.SetParent(baseObject.transform, false);
                                 shirtD.Head.name = "HeadObject";
-                                foreach (var FurObject in shirtD.Head.transform.GetComponentsInChildren<FurMatch>()) furObjects.Add(FurObject);
+
+                                foreach (var shirtComponent in shirtD.Head.GetComponentsInChildren<ShirtComponent>())
+                                {
+                                    if (shirtComponent.GetComponent<Fur>())
+                                    {
+                                        furObjects.Add(shirtComponent.GetComponent<Fur>());
+                                    }
+                                    if (shirtComponent.GetComponent<WobbleBone>())
+                                    {
+                                        wobbleObjects.Add(shirtComponent.GetComponent<WobbleBone>());
+                                    }
+                                    else if (shirtComponent.GetComponent<IgnoreWobbleBone>())
+                                    {
+                                        ignoreWobbleObjects.Add(shirtComponent.GetComponent<IgnoreWobbleBone>());
+                                    }
+                                }
                             }
                             #endregion
 
                             foreach (var furObject in furObjects)
                             {
                                 if (furObject == null) continue;
-                                GameObject colorObject = new GameObject("G_Fur" + ((int)furObject.mode).ToString());
+
+                                GameObject colorObject = new("G_Fur" + ((int)furObject.mode).ToString());
                                 colorObject.transform.SetParent(furObject.transform, false);
                                 DestroyImmediate(furObject);
+                            }
+
+                            foreach(var wobbleBone in wobbleObjects)
+                            {
+                                if (wobbleBone == null) continue;
+
+                                GameObject wobbleObj = new("Wobble0");
+                                wobbleObj.transform.SetParent(wobbleBone.transform, false);
+                                DestroyImmediate(wobbleBone);
+                            }
+
+                            foreach(var ignoreWobble in ignoreWobbleObjects)
+                            {
+                                if (ignoreWobble == null) continue;
+
+                                GameObject ignoreWobbleObj = new("Wobble1");
+                                ignoreWobbleObj.transform.SetParent(ignoreWobble.transform, false);
+                                DestroyImmediate(ignoreWobble);
                             }
 
                             foreach (var collider in baseObject.GetComponentsInChildren<Collider>()) DestroyImmediate(collider);

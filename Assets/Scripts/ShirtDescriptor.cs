@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace GorillaShirts.Data
@@ -13,6 +12,8 @@ namespace GorillaShirts.Data
         // Base data
         public string Name;
         public string Author;
+
+        [TextArea(1, 2)]
         public string Info;
 
         // Objects 
@@ -30,6 +31,11 @@ namespace GorillaShirts.Data
         public bool customColors;
         public bool invisibility;
         public List<GameObject> FurTextures;
+
+        // Settings
+        public bool wobbleLoose = true;
+        public bool wobbleLockHorizontal;
+        public bool wobbleLockVertical;
     }
 
 }
