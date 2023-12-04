@@ -36,6 +36,6 @@ namespace GorillaShirts.Data
         public bool wobbleLoose = true;
         public bool wobbleLockHorizontal;
         public bool wobbleLockVertical;
+        public bool wobbleLockRoot;
     }
-
 }

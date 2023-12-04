@@ -112,6 +112,7 @@ public class ExportWindow : EditorWindow
                             List<Fur> furObjects = new();
                             List<WobbleBone> wobbleObjects = new();
                             List<IgnoreWobbleBone> ignoreWobbleObjects = new();
+                            List<Billboard> billboardObjects = new();
 
                             // Body
 
@@ -123,6 +124,10 @@ public class ExportWindow : EditorWindow
                                 if (shirtComponent.GetComponent<Fur>())
                                 {
                                     furObjects.Add(shirtComponent.GetComponent<Fur>());
+                                }
+                                if (shirtComponent.GetComponent<Billboard>())
+                                {
+                                    billboardObjects.Add(shirtComponent.GetComponent<Billboard>());
                                 }
                                 if (shirtComponent.GetComponent<WobbleBone>())
                                 {
@@ -146,6 +151,10 @@ public class ExportWindow : EditorWindow
                                     {
                                         furObjects.Add(shirtComponent.GetComponent<Fur>());
                                     }
+                                    if (shirtComponent.GetComponent<Billboard>())
+                                    {
+                                        billboardObjects.Add(shirtComponent.GetComponent<Billboard>());
+                                    }
                                     if (shirtComponent.GetComponent<WobbleBone>())
                                     {
                                         wobbleObjects.Add(shirtComponent.GetComponent<WobbleBone>());
@@ -167,6 +176,10 @@ public class ExportWindow : EditorWindow
                                     if (shirtComponent.GetComponent<Fur>())
                                     {
                                         furObjects.Add(shirtComponent.GetComponent<Fur>());
+                                    }
+                                    if (shirtComponent.GetComponent<Billboard>())
+                                    {
+                                        billboardObjects.Add(shirtComponent.GetComponent<Billboard>());
                                     }
                                     if (shirtComponent.GetComponent<WobbleBone>())
                                     {
@@ -190,6 +203,10 @@ public class ExportWindow : EditorWindow
                                     {
                                         furObjects.Add(shirtComponent.GetComponent<Fur>());
                                     }
+                                    if (shirtComponent.GetComponent<Billboard>())
+                                    {
+                                        billboardObjects.Add(shirtComponent.GetComponent<Billboard>());
+                                    }
                                     if (shirtComponent.GetComponent<WobbleBone>())
                                     {
                                         wobbleObjects.Add(shirtComponent.GetComponent<WobbleBone>());
@@ -211,6 +228,10 @@ public class ExportWindow : EditorWindow
                                     if (shirtComponent.GetComponent<Fur>())
                                     {
                                         furObjects.Add(shirtComponent.GetComponent<Fur>());
+                                    }
+                                    if (shirtComponent.GetComponent<Billboard>())
+                                    {
+                                        billboardObjects.Add(shirtComponent.GetComponent<Billboard>());
                                     }
                                     if (shirtComponent.GetComponent<WobbleBone>())
                                     {
@@ -234,6 +255,10 @@ public class ExportWindow : EditorWindow
                                     {
                                         furObjects.Add(shirtComponent.GetComponent<Fur>());
                                     }
+                                    if (shirtComponent.GetComponent<Billboard>())
+                                    {
+                                        billboardObjects.Add(shirtComponent.GetComponent<Billboard>());
+                                    }
                                     if (shirtComponent.GetComponent<WobbleBone>())
                                     {
                                         wobbleObjects.Add(shirtComponent.GetComponent<WobbleBone>());
@@ -255,6 +280,10 @@ public class ExportWindow : EditorWindow
                                     if (shirtComponent.GetComponent<Fur>())
                                     {
                                         furObjects.Add(shirtComponent.GetComponent<Fur>());
+                                    }
+                                    if (shirtComponent.GetComponent<Billboard>())
+                                    {
+                                        billboardObjects.Add(shirtComponent.GetComponent<Billboard>());
                                     }
                                     if (shirtComponent.GetComponent<WobbleBone>())
                                     {
@@ -278,6 +307,10 @@ public class ExportWindow : EditorWindow
                                     {
                                         furObjects.Add(shirtComponent.GetComponent<Fur>());
                                     }
+                                    if (shirtComponent.GetComponent<Billboard>())
+                                    {
+                                        billboardObjects.Add(shirtComponent.GetComponent<Billboard>());
+                                    }
                                     if (shirtComponent.GetComponent<WobbleBone>())
                                     {
                                         wobbleObjects.Add(shirtComponent.GetComponent<WobbleBone>());
@@ -294,8 +327,8 @@ public class ExportWindow : EditorWindow
                             {
                                 if (furObject == null) continue;
 
-                                GameObject colorObject = new("G_Fur" + ((int)furObject.mode).ToString());
-                                colorObject.transform.SetParent(furObject.transform, false);
+                                GameObject colourObject = new("G_Fur" + ((int)furObject.mode).ToString());
+                                colourObject.transform.SetParent(furObject.transform, false);
                                 DestroyImmediate(furObject);
                             }
 
@@ -315,6 +348,15 @@ public class ExportWindow : EditorWindow
                                 GameObject ignoreWobbleObj = new("Wobble1");
                                 ignoreWobbleObj.transform.SetParent(ignoreWobble.transform, false);
                                 DestroyImmediate(ignoreWobble);
+                            }
+
+                            foreach(var billboard in billboardObjects)
+                            {
+                                if (billboard == null) continue;
+
+                                GameObject billboardObject = new("G_BB" + ((int)billboard.mode).ToString());
+                                billboardObject.transform.SetParent(billboard.transform, false);
+                                DestroyImmediate(billboard);
                             }
 
                             foreach (var collider in baseObject.GetComponentsInChildren<Collider>()) DestroyImmediate(collider);

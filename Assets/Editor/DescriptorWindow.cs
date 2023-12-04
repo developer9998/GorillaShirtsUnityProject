@@ -57,6 +57,8 @@ namespace GorillaShirts.Data
             EditorGUILayout.PropertyField(PropertyFromName("wobbleLockHorizontal"), new GUIContent("Lock Horizontal", "Wobble physics will be locked on the X/Z coordinates"));
             GUILayout.Space(2);
             EditorGUILayout.PropertyField(PropertyFromName("wobbleLockVertical"), new GUIContent("Lock Vertical", "Wobble physics will be locked on the Y coordinate"));
+            GUILayout.Space(2);
+            EditorGUILayout.PropertyField(PropertyFromName("wobbleLockRoot"), new GUIContent("Lock Root", "Wobble physics will be locked on the root object (Object with the 'WobbleBone' component)"));
 
             GUILayout.Space(12);
             EditorGUI.indentLevel--;

@@ -47,7 +47,8 @@ public class Compiler : MonoBehaviour
                 invisibility = descriptor.invisibility,
                 wobbleLoose = descriptor.wobbleLoose,
                 wobbleLockHorizontal = descriptor.wobbleLockHorizontal,
-                wobbleLockVertical = descriptor.wobbleLockVertical
+                wobbleLockVertical = descriptor.wobbleLockVertical,
+                wobbleLockRoot = descriptor.wobbleLockRoot
             }
         };
         return shirtJSON;

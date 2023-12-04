@@ -24,4 +24,5 @@ public class SConfig
     public bool wobbleLoose;
     public bool wobbleLockHorizontal;
     public bool wobbleLockVertical;
+    public bool wobbleLockRoot;
 }
