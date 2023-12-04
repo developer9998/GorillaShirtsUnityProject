@@ -5,9 +5,9 @@ public class Billboard : MonoBehaviour
 {
     public enum BillboardMode
     {
-        Default, LockVertical
+        Default, Vertical
     }
 
-    [Tooltip("Default: Object will face the player on all coordinates\n\nLockVertical: Object will face the player on X/Z coordinates, with the Y coordinate being untouched")]
+    [Tooltip("Default: Object will face the player on all coordinates\n\nLockVertical: Object will face the player on the vertical coordinate")]
     public BillboardMode mode;
 }
