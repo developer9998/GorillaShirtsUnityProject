@@ -94,6 +94,19 @@ public class ExportWindow : EditorWindow
 
                     if (descriptor != null && descriptor.Body != null && descriptor.Name != string.Empty && descriptor.Author != string.Empty && descriptor.Info != string.Empty)
                     {
+                        if (descriptor.ShirtSound1 && !descriptor.ShirtSound1.preloadAudioData)
+                        {
+                            EditorUtility.DisplayDialog("Export Warning", $"Please enable 'Preload Audio Data' for wear audio '{descriptor.ShirtSound1.name}'", "Close");
+                            return;
+                        }
+
+                        if (descriptor.ShirtSound2 && !descriptor.ShirtSound2.preloadAudioData)
+                        {
+                            EditorUtility.DisplayDialog("Export Warning", $"Please enable 'Preload Audio Data' for remove audio '{descriptor.ShirtSound2.name}'", "Close");
+                            return;
+                        }
+
+
                         Debug.Log("Attempting to save Shirt file");
                         string path = EditorUtility.SaveFilePanel("Save Shirt file", "", note.Name + ".shirt", "Shirt");
 
@@ -322,6 +335,22 @@ public class ExportWindow : EditorWindow
                                 }
                             }
                             #endregion
+
+                            void CheckAudio(AudioClip clip, string name)
+                            {
+                                if (clip)
+                                {
+                                    GameObject storedObject = new GameObject(name);
+                                    storedObject.transform.SetParent(baseObject.transform);
+
+                                    AudioSource audioSource = storedObject.AddComponent<AudioSource>();
+                                    audioSource.clip = clip;
+                                    audioSource.playOnAwake = false;
+                                }
+                            }
+
+                            CheckAudio(descriptor.ShirtSound1, "OverrideWearClip");
+                            CheckAudio(descriptor.ShirtSound2, "OverrideRemoveClip");
 
                             foreach (var furObject in furObjects)
                             {
