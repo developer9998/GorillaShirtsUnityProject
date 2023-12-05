@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [AddComponentMenu("GorillaShirts/Cosmetics/Billboard")]
-public class Billboard : MonoBehaviour
+public class Billboard : ShirtComponent
 {
     public enum BillboardMode
     {
