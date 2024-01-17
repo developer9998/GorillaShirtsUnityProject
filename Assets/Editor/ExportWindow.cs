@@ -124,7 +124,7 @@ public class ExportWindow : EditorWindow
 
                             List<Fur> furObjects = new();
                             List<WobbleBone> wobbleObjects = new();
-                            List<IgnoreWobbleBone> ignoreWobbleObjects = new();
+                            List<WobbleLock> ignoreWobbleObjects = new();
                             List<Billboard> billboardObjects = new();
 
                             // Body
@@ -146,9 +146,9 @@ public class ExportWindow : EditorWindow
                                 {
                                     wobbleObjects.Add(shirtComponent.GetComponent<WobbleBone>());
                                 }
-                                else if (shirtComponent.GetComponent<IgnoreWobbleBone>())
+                                else if (shirtComponent.GetComponent<WobbleLock>())
                                 {
-                                    ignoreWobbleObjects.Add(shirtComponent.GetComponent<IgnoreWobbleBone>());
+                                    ignoreWobbleObjects.Add(shirtComponent.GetComponent<WobbleLock>());
                                 }
                             }
 
@@ -172,9 +172,9 @@ public class ExportWindow : EditorWindow
                                     {
                                         wobbleObjects.Add(shirtComponent.GetComponent<WobbleBone>());
                                     }
-                                    else if (shirtComponent.GetComponent<IgnoreWobbleBone>())
+                                    else if (shirtComponent.GetComponent<WobbleLock>())
                                     {
-                                        ignoreWobbleObjects.Add(shirtComponent.GetComponent<IgnoreWobbleBone>());
+                                        ignoreWobbleObjects.Add(shirtComponent.GetComponent<WobbleLock>());
                                     }
                                 }
                             }
@@ -198,9 +198,9 @@ public class ExportWindow : EditorWindow
                                     {
                                         wobbleObjects.Add(shirtComponent.GetComponent<WobbleBone>());
                                     }
-                                    else if (shirtComponent.GetComponent<IgnoreWobbleBone>())
+                                    else if (shirtComponent.GetComponent<WobbleLock>())
                                     {
-                                        ignoreWobbleObjects.Add(shirtComponent.GetComponent<IgnoreWobbleBone>());
+                                        ignoreWobbleObjects.Add(shirtComponent.GetComponent<WobbleLock>());
                                     }
                                 }
                             }
@@ -224,9 +224,9 @@ public class ExportWindow : EditorWindow
                                     {
                                         wobbleObjects.Add(shirtComponent.GetComponent<WobbleBone>());
                                     }
-                                    else if (shirtComponent.GetComponent<IgnoreWobbleBone>())
+                                    else if (shirtComponent.GetComponent<WobbleLock>())
                                     {
-                                        ignoreWobbleObjects.Add(shirtComponent.GetComponent<IgnoreWobbleBone>());
+                                        ignoreWobbleObjects.Add(shirtComponent.GetComponent<WobbleLock>());
                                     }
                                 }
                             }
@@ -250,9 +250,9 @@ public class ExportWindow : EditorWindow
                                     {
                                         wobbleObjects.Add(shirtComponent.GetComponent<WobbleBone>());
                                     }
-                                    else if (shirtComponent.GetComponent<IgnoreWobbleBone>())
+                                    else if (shirtComponent.GetComponent<WobbleLock>())
                                     {
-                                        ignoreWobbleObjects.Add(shirtComponent.GetComponent<IgnoreWobbleBone>());
+                                        ignoreWobbleObjects.Add(shirtComponent.GetComponent<WobbleLock>());
                                     }
                                 }
                             }
@@ -276,9 +276,9 @@ public class ExportWindow : EditorWindow
                                     {
                                         wobbleObjects.Add(shirtComponent.GetComponent<WobbleBone>());
                                     }
-                                    else if (shirtComponent.GetComponent<IgnoreWobbleBone>())
+                                    else if (shirtComponent.GetComponent<WobbleLock>())
                                     {
-                                        ignoreWobbleObjects.Add(shirtComponent.GetComponent<IgnoreWobbleBone>());
+                                        ignoreWobbleObjects.Add(shirtComponent.GetComponent<WobbleLock>());
                                     }
                                 }
                             }
@@ -302,9 +302,9 @@ public class ExportWindow : EditorWindow
                                     {
                                         wobbleObjects.Add(shirtComponent.GetComponent<WobbleBone>());
                                     }
-                                    else if (shirtComponent.GetComponent<IgnoreWobbleBone>())
+                                    else if (shirtComponent.GetComponent<WobbleLock>())
                                     {
-                                        ignoreWobbleObjects.Add(shirtComponent.GetComponent<IgnoreWobbleBone>());
+                                        ignoreWobbleObjects.Add(shirtComponent.GetComponent<WobbleLock>());
                                     }
                                 }
                             }
@@ -328,9 +328,9 @@ public class ExportWindow : EditorWindow
                                     {
                                         wobbleObjects.Add(shirtComponent.GetComponent<WobbleBone>());
                                     }
-                                    else if (shirtComponent.GetComponent<IgnoreWobbleBone>())
+                                    else if (shirtComponent.GetComponent<WobbleLock>())
                                     {
-                                        ignoreWobbleObjects.Add(shirtComponent.GetComponent<IgnoreWobbleBone>());
+                                        ignoreWobbleObjects.Add(shirtComponent.GetComponent<WobbleLock>());
                                     }
                                 }
                             }
