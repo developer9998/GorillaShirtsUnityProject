@@ -1081,7 +1081,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1014181192}
-  - component: {fileID: 1014181193}
   m_Layer: 0
   m_Name: Stand
   m_TagString: Untagged
@@ -1106,37 +1105,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1014181193
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1014181191}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8616fa04ee116e4ebd2d70ca6e31ad8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Pack: Custom
-  Name: Shirt Name
-  Author: Author
-  Info: A custom shirt made for the GorillaShirts mod.
-  Head: {fileID: 0}
-  Body: {fileID: 0}
-  Boobs: {fileID: 0}
-  LeftUpperArm: {fileID: 0}
-  RightUpperArm: {fileID: 0}
-  LeftLowerArm: {fileID: 0}
-  RightLowerArm: {fileID: 0}
-  LeftHand: {fileID: 0}
-  RightHand: {fileID: 0}
-  customColors: 0
-  invisibility: 0
-  FurTextures: []
-  wobbleLoose: 1
-  wobbleLockHorizontal: 0
-  wobbleLockVertical: 0
 --- !u!1 &1066709072
 GameObject:
   m_ObjectHideFlags: 0
