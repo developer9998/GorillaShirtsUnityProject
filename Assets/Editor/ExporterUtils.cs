@@ -95,7 +95,7 @@ namespace GorillaShirtsUnityProject
 
             Selection.activeObject = gameObject;
 
-            string updatedPath = $"Assets/GorillaShirtAsset.prefab";
+            string updatedPath = Path.Combine("Assets", "GorillaShirtAsset.prefab"); // $"Assets/GorillaShirtAsset.prefab";
             PrefabUtility.SaveAsPrefabAsset(Selection.activeObject as GameObject, updatedPath);
             AssetBundleBuild assetBundleBuild = default;
             assetBundleBuild.assetNames = new string[] { updatedPath };
