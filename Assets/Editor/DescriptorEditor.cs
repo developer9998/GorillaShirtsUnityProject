@@ -47,6 +47,11 @@ namespace GorillaShirtsUnityProject
 
             EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
 
+            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(ShirtDescriptor.BodyType)), new GUIContent("Body Type"));
+            GUILayout.Space(6f);
+            DrawProperties(nameof(ShirtDescriptor.CustomWearSound), nameof(ShirtDescriptor.CustomRemoveSound));
+            EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
+
             if (GUILayout.Button("Export GorillaShirt"))
             {
                 string path = EditorUtility.SaveFilePanel("Export GorillaShirt", "", descriptor.ShirtName + ".gshirt", "gshirt");
