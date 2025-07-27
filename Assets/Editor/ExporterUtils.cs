@@ -95,7 +95,7 @@ namespace GorillaShirtsUnityProject
 
             Selection.activeObject = gameObject;
 
-            string updatedPath = Path.Combine("Assets", "GorillaShirtAsset.prefab"); // $"Assets/GorillaShirtAsset.prefab";
+            string updatedPath = "Assets/GorillaShirtAsset.prefab";
             PrefabUtility.SaveAsPrefabAsset(Selection.activeObject as GameObject, updatedPath);
             AssetBundleBuild assetBundleBuild = default;
             assetBundleBuild.assetNames = new string[] { updatedPath };
@@ -107,19 +107,19 @@ namespace GorillaShirtsUnityProject
 
             if (File.Exists(path))
             {
-                //Debug.Log("Removed existing shirt at path");
+                Debug.Log("Removed existing shirt at path");
                 File.Delete(path);
             }
 
             if (File.Exists(bundle_path))
             {
-                //Debug.Log("Moved asset to path");
+                Debug.Log("Moved asset to path");
                 File.Move(bundle_path, path);
             }
 
             if (File.Exists(updatedPath))
             {
-                //Debug.Log("Removed asset prefab");
+                Debug.Log("Removed asset prefab");
                 File.Delete(updatedPath);
                 File.Delete(string.Concat(updatedPath, ".meta"));
             }

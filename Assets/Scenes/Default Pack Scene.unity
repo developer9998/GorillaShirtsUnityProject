@@ -1439,6 +1439,7 @@ MonoBehaviour:
   RightLowerArm: {fileID: 2584844980330370940}
   LeftHand: {fileID: 0}
   RightHand: {fileID: 0}
+  BodyType: 0
   CustomWearSound: {fileID: 0}
   CustomRemoveSound: {fileID: 0}
 --- !u!1 &164221863
@@ -7896,6 +7897,7 @@ MonoBehaviour:
   RightLowerArm: {fileID: 92355293590367983}
   LeftHand: {fileID: 0}
   RightHand: {fileID: 0}
+  BodyType: 0
   CustomWearSound: {fileID: 0}
   CustomRemoveSound: {fileID: 0}
 --- !u!1 &1042373780
@@ -9532,6 +9534,7 @@ MonoBehaviour:
   RightLowerArm: {fileID: 8705413121102568600}
   LeftHand: {fileID: 0}
   RightHand: {fileID: 0}
+  BodyType: 0
   CustomWearSound: {fileID: 0}
   CustomRemoveSound: {fileID: 0}
 --- !u!1 &1273738994
@@ -11210,6 +11213,7 @@ MonoBehaviour:
   RightLowerArm: {fileID: 0}
   LeftHand: {fileID: 0}
   RightHand: {fileID: 0}
+  BodyType: 0
   CustomWearSound: {fileID: 0}
   CustomRemoveSound: {fileID: 0}
 --- !u!1 &1582553194
@@ -11856,6 +11860,7 @@ MonoBehaviour:
   RightLowerArm: {fileID: 0}
   LeftHand: {fileID: 0}
   RightHand: {fileID: 0}
+  BodyType: 0
   CustomWearSound: {fileID: 0}
   CustomRemoveSound: {fileID: 0}
 --- !u!1 &1682891453
@@ -13085,6 +13090,7 @@ MonoBehaviour:
   RightLowerArm: {fileID: 1955460852005080257}
   LeftHand: {fileID: 0}
   RightHand: {fileID: 0}
+  BodyType: 0
   CustomWearSound: {fileID: 0}
   CustomRemoveSound: {fileID: 0}
 --- !u!1 &1848278108
@@ -13178,6 +13184,7 @@ MonoBehaviour:
   RightLowerArm: {fileID: 452773960}
   LeftHand: {fileID: 0}
   RightHand: {fileID: 0}
+  BodyType: 0
   CustomWearSound: {fileID: 0}
   CustomRemoveSound: {fileID: 0}
 --- !u!1 &1856157092
@@ -13693,6 +13700,7 @@ MonoBehaviour:
   RightLowerArm: {fileID: 0}
   LeftHand: {fileID: 0}
   RightHand: {fileID: 0}
+  BodyType: 0
   CustomWearSound: {fileID: 0}
   CustomRemoveSound: {fileID: 0}
 --- !u!1 &1988847709
