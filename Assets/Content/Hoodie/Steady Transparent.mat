@@ -12,6 +12,7 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
+  - _ALPHATEST_ON
   - _GT_BASE_MAP_ATLAS_SLICE_SOURCE__PROPERTY
   - _HEIGHT_BASED_WATER_EFFECT
   - _REFLECTIONS_MATCAP_PERSP_AWARE
@@ -25,12 +26,11 @@ Material:
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 3000
+  m_CustomRenderQueue: 2450
   stringTagMap:
-    RenderType: Transparent
+    RenderType: TransparentCutout
   disabledShaderPasses:
   - SHADOWCASTER
-  - DepthOnly
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
@@ -145,7 +145,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints:
     - _ColorSource: 1
-    - _TransparencyMode: 3
+    - _TransparencyMode: 1
     - _UVSource: 0
     - _ZFightOffset: 1
     m_Floats:
@@ -153,7 +153,7 @@ Material:
     - _AlphaDetailToggle: 0
     - _AlphaDetail_Opacity: 1
     - _AlphaDetail_WorldSpace: 0
-    - _AlphaToMask: 0
+    - _AlphaToMask: 1
     - _BaseMap_AtlasSlice: 0
     - _BaseMap_AtlasSliceSource: 0
     - _Blend: 0
@@ -167,8 +167,8 @@ Material:
     - _ClearCoatSmoothness: 0
     - _ColorMode: 0
     - _CrystalPower: 0.32
-    - _Cull: 0
-    - _Cutoff: 0.424
+    - _Cull: 2
+    - _Cutoff: 0.485
     - _DEBUG_PAWN_DATA: 0
     - _DayNightLightmapArray_AtlasSlice: 0
     - _DeformMapIntensity: 1
@@ -181,8 +181,8 @@ Material:
     - _DistortionStrength: 1
     - _DistortionStrengthScaled: 0
     - _DoTextureRotation: 0
-    - _DstBlend: 10
-    - _DstBlendAlpha: 10
+    - _DstBlend: 0
+    - _DstBlendAlpha: 0
     - _EmissionDissolveEdgeSize: 0.1
     - _EmissionDissolveProgress: 1
     - _EmissionEnabled: 0
@@ -287,7 +287,7 @@ Material:
     - _WeatherMapDissolveEdgeSize: 0.1
     - _WeatherMap_AtlasSlice: 0
     - _WorkflowMode: 1
-    - _ZWrite: 0
+    - _ZWrite: 1
     m_Colors:
     - _AChannelColor: {r: 1, g: 1, b: 1, a: 1}
     - _AlphaDetail_ST: {r: 1, g: 1, b: 0, a: 0}

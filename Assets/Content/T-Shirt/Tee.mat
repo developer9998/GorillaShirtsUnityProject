@@ -300,7 +300,7 @@ Material:
     - _AChannelColor: {r: 1, g: 1, b: 1, a: 1}
     - _AlphaDetail_ST: {r: 1, g: 1, b: 0, a: 0}
     - _BChannelColor: {r: 1, g: 1, b: 1, a: 1}
-    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _BaseColor: {r: 1, g: 1, b: 0.45490196, a: 1}
     - _BaseMap_WH: {r: 0, g: 0, b: 0, a: 0}
     - _CameraFadeParams: {r: 0, g: Infinity, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
