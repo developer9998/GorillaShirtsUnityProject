@@ -1736,8 +1736,9 @@ MonoBehaviour:
   LeftHand: {fileID: 0}
   RightHand: {fileID: 0}
   BodyType: 0
-  CustomWearSound: {fileID: 0}
-  CustomRemoveSound: {fileID: 0}
+  WearSound: {fileID: 0}
+  RemoveSound: {fileID: 0}
+  Fallback: 0
 --- !u!1 &164221863
 GameObject:
   m_ObjectHideFlags: 0
@@ -5293,8 +5294,9 @@ MonoBehaviour:
   LeftHand: {fileID: 0}
   RightHand: {fileID: 0}
   BodyType: 0
-  CustomWearSound: {fileID: 0}
-  CustomRemoveSound: {fileID: 0}
+  WearSound: {fileID: 0}
+  RemoveSound: {fileID: 0}
+  Fallback: 0
 --- !u!1 &507456154
 GameObject:
   m_ObjectHideFlags: 0
@@ -7643,8 +7645,9 @@ MonoBehaviour:
   LeftHand: {fileID: 0}
   RightHand: {fileID: 0}
   BodyType: 0
-  CustomWearSound: {fileID: 0}
-  CustomRemoveSound: {fileID: 0}
+  WearSound: {fileID: 0}
+  RemoveSound: {fileID: 0}
+  Fallback: 0
 --- !u!1 &679393447
 GameObject:
   m_ObjectHideFlags: 0
@@ -12124,8 +12127,9 @@ MonoBehaviour:
   LeftHand: {fileID: 0}
   RightHand: {fileID: 0}
   BodyType: 0
-  CustomWearSound: {fileID: 0}
-  CustomRemoveSound: {fileID: 0}
+  WearSound: {fileID: 0}
+  RemoveSound: {fileID: 0}
+  Fallback: 0
 --- !u!1 &1042373780
 GameObject:
   m_ObjectHideFlags: 0
@@ -14841,8 +14845,9 @@ MonoBehaviour:
   LeftHand: {fileID: 0}
   RightHand: {fileID: 0}
   BodyType: 0
-  CustomWearSound: {fileID: 0}
-  CustomRemoveSound: {fileID: 0}
+  WearSound: {fileID: 0}
+  RemoveSound: {fileID: 0}
+  Fallback: 0
 --- !u!1 &1271213710
 GameObject:
   m_ObjectHideFlags: 0
@@ -17259,8 +17264,9 @@ MonoBehaviour:
   LeftHand: {fileID: 0}
   RightHand: {fileID: 0}
   BodyType: 0
-  CustomWearSound: {fileID: 0}
-  CustomRemoveSound: {fileID: 0}
+  WearSound: {fileID: 0}
+  RemoveSound: {fileID: 0}
+  Fallback: 0
 --- !u!1 &1582553194
 GameObject:
   m_ObjectHideFlags: 0
@@ -18101,8 +18107,9 @@ MonoBehaviour:
   LeftHand: {fileID: 0}
   RightHand: {fileID: 0}
   BodyType: 0
-  CustomWearSound: {fileID: 0}
-  CustomRemoveSound: {fileID: 0}
+  WearSound: {fileID: 0}
+  RemoveSound: {fileID: 0}
+  Fallback: 0
 --- !u!1 &1682891453
 GameObject:
   m_ObjectHideFlags: 0
@@ -18195,8 +18202,9 @@ MonoBehaviour:
   LeftHand: {fileID: 0}
   RightHand: {fileID: 0}
   BodyType: 0
-  CustomWearSound: {fileID: 0}
-  CustomRemoveSound: {fileID: 0}
+  WearSound: {fileID: 0}
+  RemoveSound: {fileID: 0}
+  Fallback: 0
 --- !u!1 &1685675894
 GameObject:
   m_ObjectHideFlags: 0
@@ -19566,8 +19574,9 @@ MonoBehaviour:
   LeftHand: {fileID: 0}
   RightHand: {fileID: 0}
   BodyType: 0
-  CustomWearSound: {fileID: 0}
-  CustomRemoveSound: {fileID: 0}
+  WearSound: {fileID: 0}
+  RemoveSound: {fileID: 0}
+  Fallback: 0
 --- !u!1 &1848278108
 GameObject:
   m_ObjectHideFlags: 0
@@ -19664,8 +19673,9 @@ MonoBehaviour:
   LeftHand: {fileID: 0}
   RightHand: {fileID: 0}
   BodyType: 0
-  CustomWearSound: {fileID: 0}
-  CustomRemoveSound: {fileID: 0}
+  WearSound: {fileID: 0}
+  RemoveSound: {fileID: 0}
+  Fallback: 0
 --- !u!1 &1851389272
 GameObject:
   m_ObjectHideFlags: 0
@@ -20338,8 +20348,9 @@ MonoBehaviour:
   LeftHand: {fileID: 0}
   RightHand: {fileID: 0}
   BodyType: 0
-  CustomWearSound: {fileID: 0}
-  CustomRemoveSound: {fileID: 0}
+  WearSound: {fileID: 0}
+  RemoveSound: {fileID: 0}
+  Fallback: 0
 --- !u!1 &1988847709
 GameObject:
   m_ObjectHideFlags: 0
