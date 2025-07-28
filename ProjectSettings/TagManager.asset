@@ -12,14 +12,6 @@ TagManager:
   - RightUpperArm
   - RightLowerArm
   - RightHand
-  - ObjectToggle1
-  - ObjectToggle2
-  - ObjectToggle3
-  - ObjectToggle4
-  - ObjectSwap1A
-  - ObjectSwap1B
-  - ObjectSwap2A
-  - ObjectSwap2B
   layers:
   - Default
   - TransparentFX

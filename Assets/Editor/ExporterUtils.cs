@@ -1,12 +1,12 @@
+using GorillaShirts.Behaviours.Cosmetic;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Reflection;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using GorillaShirts.Behaviours.Cosmetic;
-using System.Collections.Generic;
-using System;
-using UnityEngine.UI;
 using Object = UnityEngine.Object;
 
 namespace GorillaShirtsUnityProject
@@ -18,56 +18,85 @@ namespace GorillaShirtsUnityProject
             GameObject gameObject = Object.Instantiate(originalDescriptor.gameObject);
             gameObject.TryGetComponent(out ShirtDescriptor descriptor);
 
+            List<FieldInfo> objectMembers = new();
+            foreach(var field in descriptor.GetType().GetFields().Where(field => field.DeclaringType == descriptor.GetType()))
+            {
+                if (field.FieldType == typeof(GameObject))
+                {
+                    GameObject value = (GameObject)field.GetValue(descriptor);
+                    if (value == null || !value) continue;
+                    objectMembers.Add(field);
+                }
+            }
+
             List<GameObject> children = new();
             foreach(Transform child in gameObject.transform)
             {
+                if (objectMembers.Any(field => ((GameObject)field.GetValue(descriptor)) == child.gameObject)) continue;
                 children.Add(child.gameObject);
+            }
+
+            List<string> recognizedTags = new() { "Body", "Head", "LeftUpperArm", "LeftLowerArm", "LeftHand", "RightUpperArm", "RightLowerArm", "RightHand" };
+            Dictionary<string, Transform> bodyPartsPerTag = new();
+            foreach (Transform descendant in gameObject.GetComponentsInChildren<Transform>(false))
+            {
+                if (objectMembers.Any(field => ((GameObject)field.GetValue(descriptor)) == descendant.gameObject)) continue;
+                if (recognizedTags.Contains(descendant.tag) && !bodyPartsPerTag.ContainsKey(descendant.tag))
+                    bodyPartsPerTag.Add(descendant.tag, descendant);
             }
 
             if (descriptor.Body is GameObject body && body)
             {
+                if (bodyPartsPerTag.TryGetValue("Body", out Transform bone)) body.transform.SetParent(bone, true);
                 body.transform.SetParent(gameObject.transform, false);
                 body.name = "Body";
             }
 
             if (descriptor.Head is GameObject head && head)
             {
+                if (bodyPartsPerTag.TryGetValue("Head", out Transform bone)) head.transform.SetParent(bone, true);
                 head.transform.SetParent(gameObject.transform, false);
                 head.name = "Head";
             }
 
             if (descriptor.LeftUpperArm is GameObject leftUpper && leftUpper)
             {
+                if (bodyPartsPerTag.TryGetValue("LeftUpperArm", out Transform bone)) leftUpper.transform.SetParent(bone, true);
                 leftUpper.transform.SetParent(gameObject.transform, false);
                 leftUpper.name = "LeftUpper";
             }
 
             if (descriptor.LeftLowerArm is GameObject leftLower && leftLower)
             {
+                if (bodyPartsPerTag.TryGetValue("LeftLowerArm", out Transform bone)) leftLower.transform.SetParent(bone, true);
                 leftLower.transform.SetParent(gameObject.transform, false);
                 leftLower.name = "LeftLower";
             }
 
             if (descriptor.LeftHand is GameObject leftHand && leftHand)
             {
+                if (bodyPartsPerTag.TryGetValue("LeftHand", out Transform bone)) leftHand.transform.SetParent(bone, true);
                 leftHand.transform.SetParent(gameObject.transform, false);
                 leftHand.name = "LeftHand";
             }
 
             if (descriptor.RightUpperArm is GameObject rightUpper && rightUpper)
             {
+                if (bodyPartsPerTag.TryGetValue("RightUpperArm", out Transform bone)) rightUpper.transform.SetParent(bone, true);
                 rightUpper.transform.SetParent(gameObject.transform, false);
                 rightUpper.name = "RightUpper";
             }
 
             if (descriptor.RightLowerArm is GameObject rightLower && rightLower)
             {
+                if (bodyPartsPerTag.TryGetValue("RightLowerArm", out Transform bone)) rightLower.transform.SetParent(bone, true);
                 rightLower.transform.SetParent(gameObject.transform, false);
                 rightLower.name = "RightLower";
             }
 
             if (descriptor.RightHand is GameObject rightHand && rightHand)
             {
+                if (bodyPartsPerTag.TryGetValue("RightHand", out Transform bone)) rightHand.transform.SetParent(bone, true);
                 rightHand.transform.SetParent(gameObject.transform, false);
                 rightHand.name = "RightHand";
             }
@@ -154,6 +183,7 @@ namespace GorillaShirtsUnityProject
             }
 
             static bool IsValidObject(GameObject gameObject) => gameObject != null && gameObject;
+
             if (!IsValidObject(descriptor.Body) 
             && !IsValidObject(descriptor.Head)
             && !IsValidObject(descriptor.LeftUpperArm)
