@@ -12,6 +12,10 @@ TagManager:
   - RightUpperArm
   - RightLowerArm
   - RightHand
+  - NameTagAnchor
+  - BadgeAnchor
+  - SlingshotAnchor
+  - Substitute
   layers:
   - Default
   - TransparentFX

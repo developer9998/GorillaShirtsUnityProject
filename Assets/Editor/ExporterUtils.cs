@@ -29,20 +29,26 @@ namespace GorillaShirtsUnityProject
                 }
             }
 
-            List<GameObject> children = new();
+            List<GameObject> objectsToRemove = new();
             foreach(Transform child in gameObject.transform)
             {
                 if (objectMembers.Any(field => ((GameObject)field.GetValue(descriptor)) == child.gameObject)) continue;
-                children.Add(child.gameObject);
+                objectsToRemove.Add(child.gameObject);
             }
 
-            List<string> recognizedTags = new() { "Body", "Head", "LeftUpperArm", "LeftLowerArm", "LeftHand", "RightUpperArm", "RightLowerArm", "RightHand" };
+            List<string> recognizedTags = new() { "Body", "Head", "LeftUpperArm", "LeftLowerArm", "LeftHand", "RightUpperArm", "RightLowerArm", "RightHand", "NameTagAnchor", "BadgeAnchor", "SlingshotAnchor" };
             Dictionary<string, Transform> bodyPartsPerTag = new();
             foreach (Transform descendant in gameObject.GetComponentsInChildren<Transform>(false))
             {
                 if (objectMembers.Any(field => ((GameObject)field.GetValue(descriptor)) == descendant.gameObject)) continue;
-                if (recognizedTags.Contains(descendant.tag) && !bodyPartsPerTag.ContainsKey(descendant.tag))
+
+                if (recognizedTags.Contains(descendant.tag) && !bodyPartsPerTag.ContainsKey(descendant.tag) && descendant.gameObject.activeInHierarchy)
                     bodyPartsPerTag.Add(descendant.tag, descendant);
+
+                if (descendant.CompareTag("Substitute"))
+                {
+                    objectsToRemove.Add(descendant.gameObject);
+                }
             }
 
             if (descriptor.Body is GameObject body && body)
@@ -50,6 +56,27 @@ namespace GorillaShirtsUnityProject
                 if (bodyPartsPerTag.TryGetValue("Body", out Transform bone)) body.transform.SetParent(bone, true);
                 body.transform.SetParent(gameObject.transform, false);
                 body.name = "Body";
+            }
+
+            if (bodyPartsPerTag.TryGetValue("BadgeAnchor", out Transform badgeAnchor))
+            {
+                if (bodyPartsPerTag.TryGetValue("Body", out Transform bone)) badgeAnchor.transform.SetParent(bone, true);
+                badgeAnchor.transform.SetParent(gameObject.transform, false);
+                badgeAnchor.name = "BadgeAnchor";
+            }
+
+            if (bodyPartsPerTag.TryGetValue("SlingshotAnchor", out Transform chestAnchor))
+            {
+                if (bodyPartsPerTag.TryGetValue("Body", out Transform bone)) chestAnchor.transform.SetParent(bone, true);
+                chestAnchor.transform.SetParent(gameObject.transform, false);
+                chestAnchor.name = "SlingshotAnchor";
+            }
+
+            if (bodyPartsPerTag.TryGetValue("NameTagAnchor", out Transform nameAnchor))
+            {
+                if (bodyPartsPerTag.TryGetValue("Body", out Transform bone)) nameAnchor.transform.SetParent(bone, true);
+                nameAnchor.transform.SetParent(gameObject.transform, false);
+                nameAnchor.name = "NameTagAnchor";
             }
 
             if (descriptor.Head is GameObject head && head)
@@ -101,9 +128,10 @@ namespace GorillaShirtsUnityProject
                 rightHand.name = "RightHand";
             }
 
-            for (int i = 0; i < children.Count; i++)
+            for (int i = 0; i < objectsToRemove.Count; i++)
             {
-                Object.DestroyImmediate(children[i]);
+                if (objectsToRemove[i] == null || !objectsToRemove[i]) continue;
+                Object.DestroyImmediate(objectsToRemove[i]);
             }
 
             EditorUtility.SetDirty(descriptor);
