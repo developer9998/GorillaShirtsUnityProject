@@ -5282,7 +5282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShirtName: Template
-  PackName: Custo
+  PackName: Custom
   Author: 
   Description: A template for any custom shirt made.
   Head: {fileID: 0}
@@ -7633,7 +7633,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShirtName: Template
-  PackName: Custo
+  PackName: Custom
   Author: 
   Description: A template for any custom shirt made.
   Head: {fileID: 0}
@@ -18190,7 +18190,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShirtName: Template
-  PackName: Custo
+  PackName: Custom
   Author: 
   Description: A template for any custom shirt made.
   Head: {fileID: 0}
