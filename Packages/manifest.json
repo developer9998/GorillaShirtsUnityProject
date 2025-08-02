@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "com.unity.assetbundlebrowser": "https://github.com/Unity-Technologies/AssetBundles-Browser.git",
     "com.unity.collab-proxy": "2.0.4",
     "com.unity.formats.fbx": "4.2.1",
     "com.unity.ide.visualstudio": "2.0.18",
